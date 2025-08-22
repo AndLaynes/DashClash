@@ -6,6 +6,7 @@
     --text-secondary: #a0aec0;
     --accent-blue: #4299e1;
     --accent-blue-hover: #3182ce;
+    --accent-gray: #4a5568;
     --border-color: #4a5568;
     --status-red: #e53e3e;
     --status-orange: #dd6b20;
@@ -25,7 +26,7 @@ body {
     padding: 0;
 }
 
-/* --- Main Navigation (for main dashboard) --- */
+/* --- Main Navigation --- */
 .main-nav {
     background-color: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
@@ -67,31 +68,7 @@ body {
 }
 
 
-/* --- App Navigation (Back link on other pages) --- */
-.app-nav {
-    padding: 0.5rem 1rem;
-    background-color: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1rem;
-    border-radius: 0.5rem;
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease-in-out;
-}
-
-.back-link:hover {
-    color: var(--text-primary);
-}
-
-
-/* --- DASHBOARD STYLES (dashboard_gestao.html) --- */
+/* --- DASHBOARD STYLES --- */
 .dashboard-container {
     width: 100%;
     max-width: 1200px;
@@ -170,8 +147,7 @@ body {
 }
 
 .action-btn {
-    width: 100%;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
     font-weight: 600;
     background-color: var(--accent-blue);
@@ -180,10 +156,11 @@ body {
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none; /* For <a> tags styled as buttons */
 }
 
 .action-btn:hover:not(:disabled) {
@@ -195,10 +172,18 @@ body {
     cursor: not-allowed;
 }
 
+/* PDF Button Specific Style */
+.pdf-btn {
+    background-color: var(--accent-gray);
+}
+.pdf-btn:hover {
+    background-color: #5a667a;
+}
+
 #ai-response {
     margin-top: 1.5rem;
     padding: 1rem;
-    background-color: #1a202c;
+    background-color: var(--bg-primary);
     border-radius: 0.5rem;
     color: var(--text-secondary);
     line-height: 1.6;
@@ -212,7 +197,6 @@ body {
 #ai-response li {
     margin-bottom: 0.5rem;
 }
-
 
 #ai-loading {
     display: none; /* Hidden by default */
@@ -250,6 +234,12 @@ body {
     gap: 1rem;
 }
 
+.export-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
 .table-wrapper {
     overflow-x: auto;
 }
@@ -273,6 +263,9 @@ body {
     color: var(--text-secondary);
 }
 
+.data-table tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
 .data-table tbody tr:hover {
     background-color: #354157;
 }
