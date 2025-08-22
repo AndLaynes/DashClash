@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão (Guerra) - Joji Clã</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <span class="nav-title">Joji Clã Painel</span>
+            <div class="nav-links">
+                <a href="dashboard.html">Visão Geral</a>
+                <a href="competitive_dashboard.html">Leaderboard</a>
+                <a href="relatorio_guerra_visual.html">Relatório Visual</a>
+                <a href="relatorio_guerra_diario.html">Relatório Texto</a>
+                <a href="relatorio_para_imprimir.html">Impressão</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Painel de Gestão de Guerra</h1>
+            <p>Análise da participação de <strong>Quinta-feira</strong> para ações estratégicas.</p>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Card de Métricas Principais -->
+            <div class="card">
+                <h2 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20V16"/></svg>
+                    Métricas Principais
+                </h2>
+                <ul class="metrics-list" id="metrics-list">
+                    <!-- DADOS SERÃO INSERIDOS AQUI PELO SCRIPT PYTHON -->
+                    <li><span>Total de Jogadores na Guerra:</span> <strong>--</strong></li>
+                    <li><span>Nenhuma participação (0 Decks):</span> <strong>-- (--%)</strong></li>
+                    <li><span>Usaram 1 Deck:</span> <strong>-- (--%)</strong></li>
+                    <li><span>Usaram 2 Decks:</span> <strong>-- (--%)</strong></li>
+                    <li><span>Usaram 3 Decks:</span> <strong>-- (--%)</strong></li>
+                    <li><span>Participação completa (4 Decks):</span> <strong>-- (--%)</strong></li>
+                </ul>
+            </div>
+
+            <!-- Card de Análise da IA -->
+            <div class="card ai-analysis-card">
+                 <h2 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    Análise da IA (Gemini)
+                </h2>
+                <p>Receba um resumo e uma sugestão de ação com base nos dados atuais.</p>
+                <button class="action-btn" id="generate-ai-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                    Gerar Análise Rápida
+                </button>
+                <div id="ai-loading">
+                    <div class="spinner"></div>
+                    <span>Analisando...</span>
+                </div>
+                <div id="ai-response"><small>Clique no botão acima para gerar a análise.</small></div>
+            </div>
+
+            <!-- Card da Tabela de Jogadores -->
+            <div class="card table-card">
+                <div class="table-header">
+                    <h2 class="card-title" style="margin: 0;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Detalhes por Jogador
+                    </h2>
+                    <button class="action-btn" id="export-csv-btn" style="width: auto;">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        Exportar para CSV
+                    </button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="player-data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome do Jogador</th>
+                                <th>Decks Usados (Ontem)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="player-table-body">
+                            <!-- DADOS SERÃO INSERIDOS AQUI PELO SCRIPT PYTHON -->
+                             <tr>
+                                <td>(Aguardando dados...)</td>
+                                <td>- / 4</td>
+                                <td><span class="status">--</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            Painel desenvolvido para o Joji Clã. Dados fornecidos pela Supercell API.
+        </footer>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
