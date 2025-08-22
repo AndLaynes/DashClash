@@ -15,74 +15,46 @@
                 <a href="competitive_dashboard.html">Leaderboard</a>
                 <a href="relatorio_guerra_visual.html">Relatório Visual</a>
                 <a href="relatorio_guerra_diario.html">Relatório Texto</a>
-                <a href="relatorio_para_imprimir.html">Impressão</a>
+                <a href="relatorio_para_imprimir.html" target="_blank">Impressão</a>
             </div>
         </div>
     </nav>
-
     <div class="dashboard-container">
         <header class="dashboard-header">
             <h1>Painel de Gestão de Guerra</h1>
             <p>Análise da participação de <strong>Sexta-feira</strong> para ações estratégicas.</p>
         </header>
-
         <main class="dashboard-grid">
             <div class="card">
-                <h2 class="card-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20V16"/></svg>
-                    Métricas Principais
-                </h2>
+                <h2 class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20V16"/></svg>Métricas Principais</h2>
                 <ul class="metrics-list" id="metrics-list">
-                    
-            <li><span>Total de Jogadores na Guerra:</span> <strong>81</strong></li>
-            <li><span>Nenhuma participação (0 Decks):</span> <strong>47 (58%)</strong></li>
+            <li><span>Total de Jogadores na Guerra:</span> <strong>50</strong></li>
+            <li><span>Nenhuma participação (0 Decks):</span> <strong>17 (34%)</strong></li>
             <li><span>Usaram 1 Deck:</span> <strong>0 (0%)</strong></li>
-            <li><span>Usaram 2 Decks:</span> <strong>1 (1%)</strong></li>
-            <li><span>Usaram 3 Decks:</span> <strong>3 (4%)</strong></li>
-            <li><span>Participação completa (4 Decks):</span> <strong>30 (37%)</strong></li>
-        
-                </ul>
+            <li><span>Usaram 2 Decks:</span> <strong>1 (2%)</strong></li>
+            <li><span>Usaram 3 Decks:</span> <strong>3 (6%)</strong></li>
+            <li><span>Participação completa (4 Decks):</span> <strong>29 (58%)</strong></li>
+        </ul>
             </div>
-
             <div class="card ai-analysis-card">
-                 <h2 class="card-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                    Análise da IA (Gemini)
-                </h2>
+                <h2 class="card-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>Análise da IA (Gemini)</h2>
                 <p>Receba um resumo e uma sugestão de ação com base nos dados atuais.</p>
-                <button class="action-btn" id="generate-ai-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                    Gerar Análise Rápida
-                </button>
-                <div id="ai-loading">
-                    <div class="spinner"></div>
-                    <span>Analisando...</span>
-                </div>
-                <div id="ai-response"><small>Clique no botão acima para gerar a análise.</small></div>
+                <button class="action-btn" id="generate-ai-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Gerar Análise Rápida</button>
+                <div id="ai-loading"><div class="spinner"></div><span>Analisando...</span></div>
+                <div id="ai-response"><small>A análise da IA aparecerá aqui.</small></div>
             </div>
-
             <div class="card table-card">
                 <div class="table-header">
-                    <h2 class="card-title" style="margin: 0;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        Detalhes por Jogador
-                    </h2>
-                    <button class="action-btn" id="export-csv-btn" style="width: auto;">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                        Exportar para CSV
-                    </button>
+                    <h2 class="card-title" style="margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Detalhes por Jogador</h2>
+                    <div class="export-buttons">
+                        <button class="action-btn" id="export-csv-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Exportar CSV</button>
+                        <a href="relatorio_para_imprimir.html" target="_blank" class="action-btn pdf-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>Gerar PDF para Impressão</a>
+                    </div>
                 </div>
                 <div class="table-wrapper">
                     <table class="data-table" id="player-data-table">
-                        <thead>
-                            <tr>
-                                <th>Nome do Jogador</th>
-                                <th>Decks Usados (Ontem)</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>Nome do Jogador</th><th>Decks Usados (Ontem)</th><th>Status</th></tr></thead>
                         <tbody id="player-table-body">
-                            
                 <tr>
                     <td>(54)984288829</td>
                     <td>0 / 4</td>
@@ -90,31 +62,7 @@
                 </tr>
             
                 <tr>
-                    <td>+Robert ☯️</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>Barrocão 007</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>CHANDONN</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>CaveiraDeath</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>DG CLASH</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -132,12 +80,6 @@
                 </tr>
             
                 <tr>
-                    <td>DËV1ºCË</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>Efra13</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
@@ -150,25 +92,7 @@
                 </tr>
             
                 <tr>
-                    <td>Ferrari ⚡</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Henrique Dias</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>K. LIMA 00</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>KingWolf</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -180,31 +104,7 @@
                 </tr>
             
                 <tr>
-                    <td>LucasFLM^_^</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Mahfra</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>OUSADO</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>Rafa_Lendário</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Rafa_Rest</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -222,25 +122,7 @@
                 </tr>
             
                 <tr>
-                    <td>Simãokiller</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>Striker</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Supercell</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>TG DROPE</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -258,43 +140,7 @@
                 </tr>
             
                 <tr>
-                    <td>TheOne</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Titou</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Widowzinho</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>camille</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>davii_</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>fl0r3sM4xI35</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>mafra</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -306,61 +152,7 @@
                 </tr>
             
                 <tr>
-                    <td>mestrejohn</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>neto borges</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
                     <td>px-titanico-xp</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>riffell</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>santos fc</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>slimshadyBRAZIL</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>tybill</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>vs</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>¿AKUMA?</td>
-                    <td>0 / 4</td>
-                    <td><span class="status status-critical">Crítico</span></td>
-                </tr>
-            
-                <tr>
-                    <td>×•W∆R•×</td>
                     <td>0 / 4</td>
                     <td><span class="status status-critical">Crítico</span></td>
                 </tr>
@@ -409,12 +201,6 @@
             
                 <tr>
                     <td>Camila</td>
-                    <td>4 / 4</td>
-                    <td><span class="status status-complete">Completo</span></td>
-                </tr>
-            
-                <tr>
-                    <td>Conner</td>
                     <td>4 / 4</td>
                     <td><span class="status status-complete">Completo</span></td>
                 </tr>
@@ -568,15 +354,12 @@
                     <td>4 / 4</td>
                     <td><span class="status status-complete">Completo</span></td>
                 </tr>
-            
-                        </tbody>
+            </tbody>
                     </table>
                 </div>
             </div>
         </main>
-        <footer class="app-footer">
-            Painel desenvolvido para o Joji Clã. Dados fornecidos pela Supercell API.
-        </footer>
+        <footer class="app-footer">Painel desenvolvido para o Joji Clã. Dados fornecidos pela Supercell API.</footer>
     </div>
     <script type="module" src="script.js"></script>
 </body>
