@@ -7,7 +7,7 @@ Este é um painel de controle de código aberto para clãs de Clash Royale, proj
 *   **Visão Geral do Clã:** Métricas essenciais como número de membros, pontuações, tendências de desempenho e histórico recente.
 *   **Análise de Guerra Detalhada:** Um painel completo com métricas de participação, relatórios visuais e uma tabela de jogadores interativa.
 *   **Tabela Interativa:** Ordene os dados da guerra por nome, decks usados, fama ou status para uma análise rápida e eficiente.
-*   **Análise com IA:** IA gera resumos e sugestões de ação com base nos dados da guerra.
+*   **Análise com IA (depende de uma chave API):** Gera resumos e sugestões de ação com base nos dados da guerra.
 
 ### 🔑 Usando a Análise com IA
 
