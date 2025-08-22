@@ -1,33 +1,34 @@
-# Painel de Acompanhamento - Joji Clã
+# Painel de Controle para Clãs de Clash Royale
 
-Este repositório contém os arquivos estáticos para o painel de dados do clã **Joji** no jogo Clash Royale.
+Este é um painel de controle de código aberto para clãs de Clash Royale, projetado para fornecer insights sobre a participação e o desempenho dos membros, com foco especial nas Guerras de Clãs.
 
-## 🚀 Acessando o Painel
+## 🚀 Funcionalidades Principais
 
-O painel foi reestruturado para uma melhor experiência e pode ser acessado através do seguinte link:
+*   **Visão Geral do Clã:** Métricas essenciais como número de membros, pontuações, tendências de desempenho e histórico recente.
+*   **Análise de Guerra Detalhada:** Um painel completo com métricas de participação, relatórios visuais e uma tabela de jogadores interativa.
+*   **Tabela Interativa:** Ordene os dados da guerra por nome, decks usados, fama ou status para uma análise rápida e eficiente.
+*   **Análise com IA (Opcional):** Use o poder da IA do Google (Gemini) para gerar resumos e sugestões de ação com base nos dados da guerra.
 
-**[https://andlaynes.github.io/DashClash/online/](https://andlaynes.github.io/DashClash/online/)**
+### 🔑 Usando a Análise com IA
 
-## 📖 Sobre o Projeto
+Para ativar a funcionalidade de análise por IA, é necessário configurar uma chave de API do Google AI Studio.
 
-O objetivo deste painel é fornecer uma visão clara e objetiva sobre o desempenho dos membros do clã, com foco especial na participação em guerras. Ele serve como uma ferramenta para a gestão e para a tomada de decisões estratégicas.
+1.  Clique no ícone de **engrenagem (⚙️)** no canto superior direito do painel.
+2.  Cole sua chave de API do **Google AI Studio** no campo indicado.
+3.  Clique em "Salvar".
 
-As seções agora estão organizadas de forma mais intuitiva:
-- **Visão Geral:** A página principal (`index.html`) com as métricas gerais do clã e destaques.
-- **Análise de Guerra:** Um painel de gestão completo (`war_analysis.html`) com análise de IA, relatórios visuais e uma tabela detalhada para ação rápida.
-- **Leaderboard:** Um ranking competitivo dos membros (`leaderboard.html`).
+> **Nota de Segurança:** Sua chave de API é salva de forma segura **apenas no seu navegador** (`localStorage`) e nunca é exposta no repositório ou a outros usuários.
 
+## 🛠️ Como Funciona
 
-## ⚙️ Como Funciona (Fluxo de Trabalho de Atualização)
+Este projeto consiste em arquivos HTML, CSS e JavaScript estáticos que são servidos diretamente pelo GitHub Pages.
 
-O processo é simples e robusto, garantindo que você tenha total controle sobre os dados.
+Os dados exibidos nos painéis são gerados por um processo externo (um script Python, não incluído neste repositório) que consome a API oficial da Supercell, processa os dados e os injeta nos arquivos HTML.
 
-1.  **No seu PC (Local):**
-    *   Execute seu script para baixar os dados mais recentes da Supercell API (ex: `main.py`). Os arquivos JSON serão salvos na pasta `temp_clan_data/`.
-    *   Execute o script unificado **`gerar_relatorios.py`**. Ele processará os dados e irá gerar/sobrescrever o arquivo `war_analysis.html` dentro da pasta `online/`.
+## 📂 Estrutura do Projeto
 
-2.  **No Site do GitHub (Publicar):**
-    *   Navegue até a pasta `/online` do seu repositório.
-    *   Use a opção **`Add file -> Upload files`**.
-    *   Arraste **todos os arquivos atualizados** da sua pasta `online/` local para a janela de upload (`index.html`, `war_analysis.html`, `leaderboard.html`, `style.css` e `script.js`).
-    *   Confirme o upload (`Commit changes`). O GitHub Pages irá atualizar o site público automaticamente em poucos minutos.
+-   `online/index.html`: **Visão Geral**.
+-   `online/war_analysis.html`: **Análise de Guerra**.
+-   `online/leaderboard.html`: **Leaderboard**.
+-   `online/style.css`: Folha de estilo unificada.
+-   `online/script.js`: Script para todas as funcionalidades interativas.
