@@ -12,9 +12,12 @@ if (API_KEY) {
 // --- ELEMENTOS DO DOM ---
 const generateBtn = document.getElementById('generate-ai-btn');
 const exportBtn = document.getElementById('export-csv-btn');
+const printBtn = document.getElementById('print-btn');
 const aiResponseEl = document.getElementById('ai-response');
 const aiLoadingEl = document.getElementById('ai-loading');
 const playerTableBody = document.getElementById('player-table-body');
+const tabs = document.querySelectorAll('.tab-link');
+const tabContents = document.querySelectorAll('.tab-content-panel');
 
 // --- FUNÇÕES ---
 
@@ -72,7 +75,6 @@ async function handleGenerateAnalysis() {
     aiLoadingEl.style.display = 'flex';
     aiResponseEl.innerHTML = '';
 
-    const promptData = formatDataForPrompt(playerData);
     const fullPrompt = `
         Você é um líder assistente de um clã de Clash Royale chamado "Joji Clã".
         Sua tarefa é analisar os dados de participação na guerra do dia e fornecer um resumo claro e uma sugestão de ação direta.
@@ -132,6 +134,29 @@ function handleExportToCSV() {
     }
 }
 
+/**
+ * Dispara a funcionalidade de impressão do navegador.
+ */
+function handlePrint() {
+    window.print();
+}
+
+/**
+ * Configura a funcionalidade das abas.
+ */
+function setupTabs() {
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.tabTarget);
+
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            tabContents.forEach(content => content.classList.remove('active'));
+            target.classList.add('active');
+        });
+    });
+}
 
 // --- EVENT LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -140,5 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (exportBtn) {
         exportBtn.addEventListener('click', handleExportToCSV);
+    }
+    if (printBtn) {
+        printBtn.addEventListener('click', handlePrint);
+    }
+    if (tabs.length > 0) {
+        setupTabs();
     }
 });
