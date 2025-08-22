@@ -16,45 +16,39 @@
             <div class="nav-links">
                 <a href="index.html">Visão Geral</a>
                 <a href="war_analysis.html" class="active">Análise de Guerra</a>
-                <a href="leaderboard.html">Leaderboard</a>
+                <a href="leaderboard.html">Leaderboard (em construção)</a>
             </div>
         </nav>
 
         <main class="content">
             <header class="page-header">
                 <h1>Análise de Guerra</h1>
-                <p>Análise da participação de <strong>Quinta-feira</strong> para ações estratégicas.</p>
+                <p>Dados atualizados até <strong>21 de agosto de 2025</strong>.</p>
             </header>
 
             <div class="war-grid">
                 <aside class="sidebar">
                     <div class="card">
-                        <h2 class="card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20V16"/></svg>
-                            Métricas Principais
-                        </h2>
-                        <ul class="metrics-list" id="metrics-list">
-                            <li><span>Total de Jogadores na Guerra:</span> <strong>--</strong></li>
-                            <li><span>Nenhuma participação (0 Decks):</span> <strong>-- (--%)</strong></li>
-                            <li><span>Usaram 1 Deck:</span> <strong>-- (--%)</strong></li>
-                            <li><span>Usaram 2 Decks:</span> <strong>-- (--%)</strong></li>
-                            <li><span>Usaram 3 Decks:</span> <strong>-- (--%)</strong></li>
-                            <li><span>Participação completa (4 Decks):</span> <strong>-- (--%)</strong></li>
-                        </ul>
+                        <h2 class="card-title">Métricas da Guerra</h2>
+                        <div class="sidebar-stats-grid"><div class="stat-card">
+                    <div class="stat-card-header"><svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Total na Guerra</span></div>
+                    <p class="stat-card-value">50 <span class="stat-card-percent">(100%)</span></p>
+                </div><div class="stat-card">
+                    <div class="stat-card-header"><svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Completo (4/4)</span></div>
+                    <p class="stat-card-value">29 <span class="stat-card-percent">(58%)</span></p>
+                </div><div class="stat-card">
+                    <div class="stat-card-header"><svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span>Parcial (1-3)</span></div>
+                    <p class="stat-card-value">4 <span class="stat-card-percent">(8%)</span></p>
+                </div><div class="stat-card">
+                    <div class="stat-card-header"><svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg><span>Nenhuma</span></div>
+                    <p class="stat-card-value">17 <span class="stat-card-percent">(34%)</span></p>
+                </div></div>
                     </div>
                      <div class="card">
-                        <h2 class="card-title">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                            Análise da IA (Gemini)
-                        </h2>
-                        <p class="card-subtitle" style="padding-bottom: 0.5rem">Receba um resumo e uma sugestão de ação com base nos dados atuais.</p>
-                        <button class="button" id="generate-ai-btn">
-                            Gerar Análise
-                        </button>
-                        <div id="ai-loading">
-                            <div class="spinner"></div>
-                            <span>Analisando...</span>
-                        </div>
+                        <h2 class="card-title">Análise da IA (Gemini)</h2>
+                        <p class="card-subtitle">Receba um resumo e uma sugestão de ação com base nos dados atuais.</p>
+                        <button class="button" id="generate-ai-btn">Gerar Análise</button>
+                        <div id="ai-loading"><div class="spinner"></div><span>Analisando...</span></div>
                         <div id="ai-response"><small>A análise da IA aparecerá aqui.</small></div>
                     </div>
                 </aside>
@@ -63,103 +57,26 @@
                     <div class="card printable-area">
                         <div class="tabs">
                             <button class="tab-link active" data-tab-target="#tab-details">Detalhes por Jogador</button>
-                            <button class="tab-link" data-tab-target="#tab-visual">Relatório Visual</button>
+                            <button class="tab-link" data-tab-target="#tab-visual">Relatório Visual (Incompletos)</button>
                         </div>
-
                         <div id="tab-details" class="tab-content-panel active">
                              <div class="table-actions">
-                                <button class="button secondary" id="export-csv-btn">
-                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
-                                    Exportar CSV
-                                </button>
-                                <button class="button secondary" id="print-btn">
-                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0c1.281.28 2.326.28 3.536 0M6.34 18c-1.281.28-2.326.28-3.536 0m-1.204-1.204A1.125 1.125 0 0 1 3 15.118V11.882c0-.635.518-1.153 1.153-1.153h13.694c.635 0 1.153.518 1.153 1.153v3.236c0 .635-.518 1.153-1.153 1.153H1.653Z" /></svg>
-                                    Imprimir / PDF
-                                </button>
+                                <button class="button secondary" id="export-csv-btn">Exportar CSV</button>
+                                <button class="button secondary" id="print-btn">Imprimir / PDF</button>
                             </div>
-                            <div class="table-wrapper-simple">
+                            <div class="table-wrapper-simple" style="max-height: 600px;">
                                 <table class="data-table" id="player-data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome do Jogador</th>
-                                            <th>Decks Usados (Ontem)</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="player-table-body">
-                                        <!-- DADOS SERÃO INSERIDOS AQUI PELO SCRIPT PYTHON -->
-                                        <tr>
-                                            <td>(Aguardando dados...)</td>
-                                            <td>- / 4</td>
-                                            <td><span class="status">--</span></td>
-                                        </tr>
-                                    </tbody>
+                                    <thead><tr><th>Nome do Jogador</th><th>Decks Usados (Ontem)</th><th>Status</th></tr></thead>
+                                    <tbody id="player-table-body"><tr><td>(54)984288829</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Barrocão 007</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>DJ ANDROMEDA</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Douglas25</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Efra13</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Fellipe Motta</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>K. LIMA 00</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>LatrelSpencer09</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Rafa_Lendário</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>SR_STARK_®✓</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>SURICATO</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>Striker</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>THz</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>TITAN GAMING</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>davii_</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>marco</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>px-titanico-xp</td><td>0 / 4</td><td><span class="status status-critical">Crítico</span></td></tr><tr><td>joãozinho1116</td><td>2 / 4</td><td><span class="status status-warning">Atenção</span></td></tr><tr><td>Rafa Júnior</td><td>3 / 4</td><td><span class="status status-ok">OK</span></td></tr><tr><td>pyetto</td><td>3 / 4</td><td><span class="status status-ok">OK</span></td></tr><tr><td>vitor</td><td>3 / 4</td><td><span class="status status-ok">OK</span></td></tr><tr><td>Argarante</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>BlueRyouga</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Bruno</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Camila</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Coronel Bode</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>EzequielZinh☠️</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Good Knight</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Kinho</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>L SCORPION777</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Laynes</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Logri</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>MANO PIVETA</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Noobmaster...</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>PK愛</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>RAFAEL</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Sir Wenzel</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>Will</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>William</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>WvCly</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>alisso</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>brb</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>d3strokis13</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>harry</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>mano tam</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>neri157</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>rubick</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>strom</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>tudoFRACO</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr><tr><td>zemalon</td><td>4 / 4</td><td><span class="status status-complete">Completo</span></td></tr></tbody>
                                 </table>
                             </div>
                         </div>
-
-                        <div id="tab-visual" class="tab-content-panel">
-                            <div class="card-grid" id="incomplete-players">
-                                <div class="player-card decks-0"><div class="name">(54)984288829</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">+Robert ☯️</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Barrocão 007</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">CHANDONN</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">CaveiraDeath</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">DG CLASH</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">DJ ANDROMEDA</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Douglas25</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">DËV1ºCË</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Efra13</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Fellipe Motta</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Ferrari ⚡</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Henrique Dias</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">K. LIMA 00</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">KingWolf</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">LatrelSpencer09</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">LucasFLM^_^</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Mahfra</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">OUSADO</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Rafa_Lendário</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Rafa_Rest</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">SR_STARK_®✓</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">SURICATO</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Simãokiller</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Striker</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Supercell</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">TG DROPE</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">THz</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">TITAN GAMING</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">TheOne</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Titou</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">Widowzinho</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">camille</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">davii_</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">fl0r3sM4xI35</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">mafra</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">marco</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">mestrejohn</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">neto borges</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">px-titanico-xp</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">riffell</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">santos fc</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">slimshadyBRAZIL</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">tybill</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">vs</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">¿AKUMA?</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-0"><div class="name">×•W∆R•×</div><div class="decks">0 / 4 decks</div></div>
-                                <div class="player-card decks-2"><div class="name">joãozinho1116</div><div class="decks">2 / 4 decks</div></div>
-                                <div class="player-card decks-3"><div class="name">Rafa Júnior</div><div class="decks">3 / 4 decks</div></div>
-                                <div class="player-card decks-3"><div class="name">pyetto</div><div class="decks">3 / 4 decks</div></div>
-                                <div class="player-card decks-3"><div class="name">vitor</div><div class="decks">3 / 4 decks</div></div>
-                            </div>
-                        </div>
+                        <div id="tab-visual" class="tab-content-panel"><div class="card-grid"><div class="player-card decks-0"><div class="name">(54)984288829</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Barrocão 007</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">DJ ANDROMEDA</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Douglas25</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Efra13</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Fellipe Motta</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">K. LIMA 00</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">LatrelSpencer09</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Rafa_Lendário</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">SR_STARK_®✓</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">SURICATO</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">Striker</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">THz</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">TITAN GAMING</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">davii_</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">marco</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-0"><div class="name">px-titanico-xp</div><div class="decks">0 / 4 decks</div></div><div class="player-card decks-2"><div class="name">joãozinho1116</div><div class="decks">2 / 4 decks</div></div><div class="player-card decks-3"><div class="name">Rafa Júnior</div><div class="decks">3 / 4 decks</div></div><div class="player-card decks-3"><div class="name">pyetto</div><div class="decks">3 / 4 decks</div></div><div class="player-card decks-3"><div class="name">vitor</div><div class="decks">3 / 4 decks</div></div></div></div>
                     </div>
                 </main>
             </div>
         </main>
-        <footer class="app-footer">
-            Painel desenvolvido para o Joji Clã.
-        </footer>
+        <footer class="app-footer">Painel desenvolvido para o Joji Clã.</footer>
     </div>
     <script type="module" src="script.js"></script>
 </body>
