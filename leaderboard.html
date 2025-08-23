@@ -1,92 +1,106 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Leaderboard | Joji Clã Dashboard</title>
-<link href="style.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | Joji Clã Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^1.15.0"
+      }
+    }
+    </script>
 </head>
 <body>
-<div class="container">
-<nav class="main-nav">
-<div class="nav-container">
-<div class="nav-title">Joji Clã</div>
-<div class="nav-links">
-<a href="index.html">Visão Geral</a>
-<a href="war_analysis.html">Análise de Guerra</a>
-<a class="active" href="leaderboard.html">Leaderboard</a>
-</div>
-</div>
-<div class="nav-settings">
-<button class="settings-icon" id="settings-btn" title="Configurar Chave de API">
-<svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.594 3.94c.09-.542.56-1.007 1.11-1.226.554-.22 1.198-.22 1.752 0 .549.22 1.02.684 1.11 1.226M9.75 7.5c0 .533-.427 1.006-.968 1.125a17.902 17.902 0 0 1-4.282 0c-.54-.12-.968-.592-.968-1.125s.427-1.006.968-1.125a17.902 17.902 0 0 1 4.282 0c.54.12.968.592.968 1.125Zm10.5 0c0 .533-.427 1.006-.968 1.125a17.903 17.903 0 0 1-4.282 0c-.54-.12-.968-.592-.968-1.125s.427-1.006.968-1.125a17.903 17.903 0 0 1 4.282 0c.54.12.968.592.968 1.125Z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</nav>
-<main class="content">
-<header class="page-header">
-<h1>Leaderboard Competitivo</h1>
-<p>Ranking de desempenho geral dos membros do clã. Atualizado até <strong>22 de agosto de 2025</strong>.</p>
-</header>
-<div class="leaderboard-grid">
-<div class="stat-card">
-<div class="stat-card-header">
-<svg class="icon" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 2a.75.75 0 01.75.75v3.542l1.62-1.62a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 011.06-1.06l1.62 1.62V2.75A.75.75 0 0110 2zM3.863 11.333a.75.75 0 01.924-.533l1.872.822a.75.75 0 010 1.358l-1.872.822a.75.75 0 01-.924-.533V11.333zm12.274 0a.75.75 0 01-.924.533l-1.872.822a.75.75 0 010 1.358l1.872.822a.75.75 0 01.924-.533V11.333zM10 12.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5a.75.75 0 01.75-.75z" fill-rule="evenodd"></path></svg>
-<span>Jogador do Mês</span>
-</div>
-<p class="stat-card-value" id="mvp-player">(Sem dados)</p>
-</div>
-<div class="stat-card">
-<div class="stat-card-header">
-<svg class="icon" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path></svg>
-<span>Maior Doador</span>
-</div>
-<p class="stat-card-value" id="top-donator">(Sem dados)</p>
-</div>
-</div>
-<div class="card">
-<div class="table-wrapper-simple" style="max-height: 800px;">
-<table class="data-table" id="leaderboard-table">
-<thead>
-<tr>
-<th style="width: 5%;">Pos.</th>
-<th class="sortable" data-column="name">Jogador</th>
-<th class="sortable" data-column="score">Pontuação</th>
-<th class="sortable" data-column="fame">Fama Total</th>
-<th class="sortable" data-column="donations">Doações</th>
-<th class="sortable" data-column="participation">Part. Guerras</th>
-</tr>
-</thead>
-<tbody id="leaderboard-table-body"><tr><td class="text-center text-secondary" colspan="6">(Histórico insuficiente para gerar a Leaderboard.)</td></tr></tbody>
-</table>
-</div>
-</div>
-</main>
-<footer class="app-footer">
+    <div class="container">
+        <nav class="main-nav">
+             <div class="nav-container">
+                <div class="nav-title">Joji Clã</div>
+                <div class="nav-links">
+                    <a href="index.html">Visão Geral</a>
+                    <a href="war_analysis.html">Análise de Guerra</a>
+                    <a href="leaderboard.html" class="active">Leaderboard</a>
+                </div>
+            </div>
+            <div class="nav-settings">
+                <button id="settings-btn" class="settings-icon" title="Configurar Chave de API">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.007 1.11-1.226.554-.22 1.198-.22 1.752 0 .549.22 1.02.684 1.11 1.226M9.75 7.5c0 .533-.427 1.006-.968 1.125a17.902 17.902 0 0 1-4.282 0c-.54-.12-.968-.592-.968-1.125s.427-1.006.968-1.125a17.902 17.902 0 0 1 4.282 0c.54.12.968.592.968 1.125Zm10.5 0c0 .533-.427 1.006-.968 1.125a17.903 17.903 0 0 1-4.282 0c-.54-.12-.968-.592-.968-1.125s.427-1.006.968-1.125a17.903 17.903 0 0 1 4.282 0c.54.12.968.592.968 1.125Z" /></svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content">
+             <header class="page-header">
+                <h1>Leaderboard Competitivo</h1>
+                <p>Ranking de desempenho geral dos membros do clã. Atualizado até <strong>(data gerada pelo script)</strong>.</p>
+            </header>
+            
+            <div class="leaderboard-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a.75.75 0 01.75.75v3.542l1.62-1.62a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 011.06-1.06l1.62 1.62V2.75A.75.75 0 0110 2zM3.863 11.333a.75.75 0 01.924-.533l1.872.822a.75.75 0 010 1.358l-1.872.822a.75.75 0 01-.924-.533V11.333zm12.274 0a.75.75 0 01-.924.533l-1.872.822a.75.75 0 010 1.358l1.872.822a.75.75 0 01.924-.533V11.333zM10 12.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5a.75.75 0 01.75-.75z" clip-rule="evenodd" /></svg>
+                        <span>Jogador do Mês</span>
+                    </div>
+                    <p class="stat-card-value" id="mvp-player">(Aguardando dados)</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" /></svg>
+                        <span>Maior Doador</span>
+                    </div>
+                    <p class="stat-card-value" id="top-donator">(Aguardando dados)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper-simple" style="max-height: 800px;">
+                    <table class="data-table" id="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">Pos.</th>
+                                <th class="sortable" data-column="name">Jogador</th>
+                                <th class="sortable" data-column="score">Pontuação</th>
+                                <th class="sortable" data-column="fame">Fama Total</th>
+                                <th class="sortable" data-column="donations">Doações</th>
+                                <th class="sortable" data-column="participation">Part. Guerras</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-table-body">
+                            <!-- DADOS DA TABELA GERADOS PELO SCRIPT -->
+                            <tr><td colspan="6" class="text-center text-secondary">(Aguardando dados...)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+        <footer class="app-footer">
             Painel desenvolvido para o Joji Clã.
         </footer>
-</div>
-<!-- Modal de Configuração da API Key -->
-<div class="modal-backdrop" id="api-key-modal" style="display: none;">
-<div class="modal-content">
-<div class="modal-header">
-<h3>Configurar Chave de API (Gemini)</h3>
-<button class="close-button" id="close-modal-btn">×</button>
-</div>
-<p>Para usar a funcionalidade de análise por IA, você precisa de uma chave de API do Google AI Studio. A chave é salva com segurança apenas no seu navegador.</p>
-<div class="form-group">
-<label for="api-key-input">Sua Chave de API:</label>
-<input id="api-key-input" placeholder="Cole sua chave aqui" type="password"/>
-</div>
-<div class="modal-footer">
-<button class="button" id="save-api-key-btn">Salvar Chave</button>
-</div>
-</div>
-</div>
-<script src="script.js" type="module"></script>
+    </div>
+
+    <!-- Modal de Configuração da API Key -->
+    <div id="api-key-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Configurar Chave de API (Gemini)</h3>
+                <button id="close-modal-btn" class="close-button">&times;</button>
+            </div>
+            <p>Para usar a funcionalidade de análise por IA, você precisa de uma chave de API do Google AI Studio. A chave é salva com segurança apenas no seu navegador.</p>
+            <div class="form-group">
+                <label for="api-key-input">Sua Chave de API:</label>
+                <input type="password" id="api-key-input" placeholder="Cole sua chave aqui">
+            </div>
+            <div class="modal-footer">
+                <button id="save-api-key-btn" class="button">Salvar Chave</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>

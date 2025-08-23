@@ -418,9 +418,10 @@ body {
 }
 
 
-.decks-0 { border-color: var(--status-red); } .decks-0 .decks { color: var(--status-red); }
-.decks-1, .decks-2 { border-color: var(--status-orange); } .decks-1 .decks, .decks-2 .decks { color: var(--status-orange); }
-.decks-3 { border-color: var(--status-ok); } .decks-3 .decks { color: var(--status-ok); }
+.decks-critical { border-color: var(--status-red); } .decks-critical .decks { color: var(--status-red); }
+.decks-warning { border-color: var(--status-orange); } .decks-warning .decks { color: var(--status-orange); }
+.decks-ok { border-color: var(--status-ok); } .decks-ok .decks { color: var(--status-ok); }
+.decks-complete { border-color: var(--status-complete); } .decks-complete .decks { color: var(--status-complete); }
 
 
 /* --- PAGE: Leaderboard (leaderboard.html) --- */

@@ -72,11 +72,30 @@ function closeSettingsModal() {
 
 // --- LÓGICA DA PÁGINA ---
 
+/**
+ * Determina a meta de decks com base no dia atual da semana para a análise da IA.
+ */
+function getWarDayTargetForAI() {
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // 0=Domingo, 1=Segunda, ..., 6=Sábado
+
+    const targets = {
+        4: { name: 'Quinta-feira', goal: 4 },
+        5: { name: 'Sexta-feira', goal: 4 },
+        6: { name: 'Sábado', goal: 8 },
+        0: { name: 'Domingo', goal: 12 },
+        1: { name: 'Segunda-feira', goal: 16 },
+        2: { name: 'Terça-feira', goal: 16 },
+        3: { name: 'Quarta-feira', goal: 16 }
+    };
+    return targets[dayOfWeek] || targets[1];
+}
+
 function getPlayerData() {
     if (!playerTableBody) return [];
     const rows = playerTableBody.querySelectorAll('tr');
-    if (rows.length === 0 || (rows.length === 1 && rows[0].querySelector('td').colSpan === 4)) {
-        return []; // Retorna vazio se não houver linhas ou se for a linha "aguardando dados"
+    if (rows.length === 0 || (rows.length === 1 && rows[0].querySelector('td')?.colSpan >= 4)) {
+        return [];
     }
     return Array.from(rows).map(row => {
         const cells = row.querySelectorAll('td');
@@ -111,13 +130,14 @@ async function handleGenerateAnalysis() {
     aiLoadingEl.style.display = 'flex';
     aiResponseEl.innerHTML = '';
 
-    const fullPrompt = `Você é um líder assistente de um clã de Clash Royale. Analise os dados de participação na guerra e forneça um resumo pragmático e uma sugestão de ação direta. Use bullet points.
+    const { name: dayName, goal } = getWarDayTargetForAI();
+    const fullPrompt = `Você é um líder assistente de um clã de Clash Royale. Hoje é ${dayName}, então a meta é que cada jogador tenha usado ${goal} decks. Analise os dados de participação na guerra e forneça um resumo pragmático e uma sugestão de ação direta. Use bullet points.
 
 **Análise Requerida:**
-1.  **Diagnóstico Rápido:** Um resumo breve da situação (ex: "Muitos jogadores inativos", "Participação sólida", etc.).
-2.  **Jogadores Críticos:** Liste os jogadores com 0 ou 1 deck usado, pois são prioridade para ação.
-3.  **Destaques de Desempenho:** Se houver, mencione jogadores com alta Fama.
-4.  **Sugestão de Ação:** Sugira uma ação clara (ex: "Enviar aviso para jogadores com 0 decks", "Parabenizar o clã pelo desempenho").
+1.  **Diagnóstico Rápido:** Um resumo breve da situação com base na meta de ${goal} decks por jogador.
+2.  **Jogadores Críticos:** Liste os jogadores com status "Crítico". Eles são a maior prioridade.
+3.  **Jogadores em Atenção:** Liste os jogadores com status "Atenção". Eles precisam de um lembrete.
+4.  **Sugestão de Ação:** Sugira uma ação clara e segmentada (ex: "Enviar aviso final para jogadores críticos", "Enviar lembrete para jogadores em atenção", "Parabenizar quem já completou").
 
 **Dados para Análise:**
 ${formatDataForPrompt(playerData)}`;
@@ -147,7 +167,7 @@ function handleExportToCSV() {
     const headers = ['Nome do Jogador', 'Decks Usados', 'Fama', 'Status'];
     const csvContent = [
         headers.join(','),
-        ...playerData.map(p => [p.name.replace(/,/g, ''), p.decks, p.fame, p.status].join(','))
+        ...playerData.map(p => [p.name.replace(/,/g, ''), p.decks.replace(/,/g, ''), p.fame, p.status].join(','))
     ].join('\n');
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -204,7 +224,7 @@ function sortTableByColumn(table, column, order = 'asc') {
     const rows = Array.from(tableBody.querySelectorAll('tr'));
     const columnIndex = Array.from(table.querySelectorAll('th')).findIndex(th => th.dataset.column === column);
 
-    const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+    const collator = new Intl.Collator('pt-BR', { numeric: true, sensitivity: 'base' });
     const direction = order === 'asc' ? 1 : -1;
 
     rows.sort((a, b) => {
@@ -228,9 +248,11 @@ document.addEventListener('DOMContentLoaded', () => {
         apiKeyModal.addEventListener('click', (e) => {
             if (e.target === apiKeyModal) closeSettingsModal();
         });
-        apiKeyInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') saveApiKey();
-        });
+        if (apiKeyInput) {
+            apiKeyInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') saveApiKey();
+            });
+        }
     }
 
     if (generateBtn) generateBtn.addEventListener('click', handleGenerateAnalysis);
