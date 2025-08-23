@@ -15,7 +15,7 @@
     --status-ok: #3182ce;
     --status-complete: #48bb78;
     --rank-gold: #f6e05e;
-    --rank-silver: #e2e8f0;
+    --rank-silver: #d6d6d6;
     --rank-bronze: #f6ad55;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --radius: 0.75rem;
@@ -47,7 +47,7 @@ body {
     height: 1.25rem;
 }
 
-.text-yellow-400 { color: #f6e05e; }
+.text-secondary { color: var(--text-secondary); }
 .text-center { text-align: center; }
 
 /* --- Main Navigation --- */
@@ -140,7 +140,7 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0;
+    margin: 0 0 0.25rem 0;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -148,15 +148,8 @@ body {
 .card-subtitle {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    margin-top: 0.25rem;
+    margin-top: 0;
     margin-bottom: 1rem;
-}
-.card-footer-note {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
 }
 
 /* --- Button Styles --- */
@@ -234,6 +227,64 @@ body {
     margin-top: auto; /* Pushes button to the bottom */
 }
 
+/* Gráfico / Placeholder de Conteúdo */
+.chart-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px; /* Garante altura mínima mesmo sem gráfico */
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+.chart-container > svg {
+    width: 100%;
+    height: auto;
+}
+
+.chart-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+
+.chart-placeholder .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex-shrink: 0;
+}
+
+/* Módulo Resultado Última Guerra */
+.result-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.result-item:last-child {
+    border-bottom: none;
+}
+.result-item span {
+    color: var(--text-secondary);
+}
+.result-value {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
 
 /* --- PAGE: Análise de Guerra (war_analysis.html) --- */
 .war-grid {
@@ -273,6 +324,7 @@ body {
     border-radius: 0.5rem; color: var(--text-secondary);
     line-height: 1.6; flex-grow: 1; white-space: pre-wrap;
     font-family: inherit; font-size: 0.9rem;
+    min-height: 100px;
 }
 #ai-response ul { padding-left: 1.5rem; margin: 0; }
 #ai-response li { margin-bottom: 0.5rem; }
@@ -328,6 +380,8 @@ body {
     font-size: 1.25rem;
     margin-bottom: 1rem;
     color: var(--text-secondary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 .card-grid {
     display: grid;
@@ -343,12 +397,14 @@ body {
 .player-card:hover { transform: translateY(-4px); }
 .player-card .name { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
 .player-card .decks { font-size: 1.25rem; font-weight: 700; }
+
 .recognition-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.75rem;
     padding: 0;
     list-style: none;
+    margin: 0;
 }
 .recognition-list li {
     background-color: var(--bg-tertiary);
@@ -366,16 +422,42 @@ body {
 .decks-1, .decks-2 { border-color: var(--status-orange); } .decks-1 .decks, .decks-2 .decks { color: var(--status-orange); }
 .decks-3 { border-color: var(--status-ok); } .decks-3 .decks { color: var(--status-ok); }
 
+
+/* --- PAGE: Leaderboard (leaderboard.html) --- */
+.leaderboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.leaderboard-grid .stat-card-value {
+    font-size: 1.5rem;
+}
+#leaderboard-table .rank {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+}
+#leaderboard-table .rank-1,
+#leaderboard-table .rank-2,
+#leaderboard-table .rank-3 {
+    font-weight: 900;
+}
+#leaderboard-table .rank-1 .rank { color: var(--rank-gold); }
+#leaderboard-table .rank-2 .rank { color: var(--rank-silver); }
+#leaderboard-table .rank-3 .rank { color: var(--rank-bronze); }
+
+
 /* --- Table Styles (Shared) --- */
 .table-wrapper-simple {
     overflow-x: auto;
 }
-.simple-table, .leaderboard-table, .data-table {
+.data-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
-.simple-table th, .leaderboard-table th, .data-table th {
+.data-table th {
     padding: 0.75rem 1rem;
     background-color: var(--bg-tertiary);
     font-size: 0.8rem;
@@ -384,24 +466,16 @@ body {
     position: sticky; top: 0;
     z-index: 10;
 }
-.simple-table td, .leaderboard-table td, .data-table td {
+.data-table td {
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--border-color);
     white-space: nowrap;
 }
-.simple-table tbody tr:hover, .leaderboard-table tbody tr:hover, .data-table tbody tr:hover {
+.data-table tbody tr:hover {
     background-color: var(--bg-tertiary);
 }
-.simple-table .value, .leaderboard-table .score {
-    font-family: monospace;
-    font-weight: 600;
-}
-.simple-table .rank {
-    font-weight: 600;
-    text-align: center;
-}
 
-/* Data Table (War Analysis) */
+/* Data Table (War Analysis & Leaderboard) */
 .table-actions {
     display: flex; gap: 1rem;
     margin-bottom: 1rem; justify-content: flex-end;
@@ -440,23 +514,10 @@ body {
     background-color: var(--border-color); color: var(--text-primary);
     text-align: center; display: inline-block;
 }
-.status-critical { background-color: var(--status-red); color: white; }
+.status-critical, .status-red { background-color: var(--status-red); color: white; }
 .status-warning { background-color: var(--status-orange); color: white; }
 .status-ok { background-color: var(--status-ok); color: white; }
 .status-complete { background-color: var(--status-complete); color: white; }
-
-
-/* --- PAGE: Leaderboard --- */
-.leaderboard-table .rank { font-size: 1.125rem; text-align: center; font-weight: 700; width: 5%; }
-.leaderboard-table .player-name { font-weight: 600; }
-.leaderboard-table .score { color: var(--accent-blue); }
-
-.rank-gold { background: linear-gradient(90deg, rgba(246, 224, 94, 0.1), transparent); }
-.rank-gold .rank, .rank-gold .player-name { color: var(--rank-gold); }
-.rank-silver { background: linear-gradient(90deg, rgba(226, 232, 240, 0.1), transparent); }
-.rank-silver .rank, .rank-silver .player-name { color: var(--rank-silver); }
-.rank-bronze { background: linear-gradient(90deg, rgba(246, 173, 85, 0.1), transparent); }
-.rank-bronze .rank, .rank-bronze .player-name { color: var(--rank-bronze); }
 
 
 /* --- API KEY MODAL --- */
@@ -569,6 +630,12 @@ body {
         justify-content: center;
     }
     .sidebar-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-stats-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -579,7 +646,7 @@ body {
         color: black !important;
         font-size: 10pt;
     }
-    .main-nav, .sidebar, .page-header, .tabs, .table-actions, .app-footer, .card-title, .settings-icon, .modal-backdrop {
+    .main-nav, .sidebar, .page-header, .tabs, .table-actions, .app-footer, .card-title, .settings-icon, .modal-backdrop, #recognition-section, #incomplete-section h3 {
         display: none !important;
     }
     .container, .content, .card, .main-column {

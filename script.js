@@ -15,8 +15,8 @@ const playerTableBody = document.getElementById('player-table-body');
 const tabs = document.querySelectorAll('.tab-link');
 const tabContents = document.querySelectorAll('.tab-content-panel');
 
-// Modal de API Key
-const settingsBtn = document.getElementById('settings-btn');
+// Modal de API Key (Seleciona em todas as páginas)
+const settingsBtns = document.querySelectorAll('#settings-btn');
 const apiKeyModal = document.getElementById('api-key-modal');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const saveApiKeyBtn = document.getElementById('save-api-key-btn');
@@ -24,67 +24,60 @@ const apiKeyInput = document.getElementById('api-key-input');
 
 // --- GESTÃO DA API KEY ---
 
-/**
- * Salva a chave da API no localStorage.
- */
 function saveApiKey() {
     const apiKey = apiKeyInput.value.trim();
     if (apiKey) {
         localStorage.setItem(API_KEY_STORAGE_KEY, apiKey);
         alert('Chave de API salva com sucesso!');
         closeSettingsModal();
-        initAiInstance(); // Tenta inicializar a IA com a nova chave
+        initAiInstance();
     } else {
         alert('Por favor, insira uma chave de API válida.');
     }
 }
 
-/**
- * Retorna a chave da API salva no localStorage.
- * @returns {string|null}
- */
 function getApiKey() {
     return localStorage.getItem(API_KEY_STORAGE_KEY);
 }
 
-/**
- * Inicializa a instância do GoogleGenAI se uma chave de API estiver disponível.
- */
 function initAiInstance() {
     const apiKey = getApiKey();
     if (apiKey) {
-        ai = new GoogleGenAI({ apiKey });
-        if(generateBtn) generateBtn.textContent = 'Gerar Análise';
+        try {
+            ai = new GoogleGenAI({ apiKey });
+            if (generateBtn) generateBtn.disabled = false;
+        } catch (error) {
+            console.error("Erro ao inicializar a IA. A chave pode ser inválida.", error);
+            ai = null;
+            if (generateBtn) generateBtn.disabled = true;
+        }
     } else {
-        if(generateBtn) generateBtn.textContent = 'Configurar Chave de IA';
+        ai = null;
     }
 }
 
-/**
- * Abre o modal de configuração da chave de API.
- */
 function openSettingsModal() {
-    apiKeyInput.value = getApiKey() || '';
-    apiKeyModal.style.display = 'flex';
+    if (apiKeyModal) {
+        apiKeyInput.value = getApiKey() || '';
+        apiKeyModal.style.display = 'flex';
+    }
 }
 
-/**
- * Fecha o modal de configuração da chave de API.
- */
 function closeSettingsModal() {
-    apiKeyModal.style.display = 'none';
+    if (apiKeyModal) {
+        apiKeyModal.style.display = 'none';
+    }
 }
 
 
 // --- LÓGICA DA PÁGINA ---
 
-/**
- * Coleta os dados da tabela de jogadores.
- * @returns {Array<Object>}
- */
 function getPlayerData() {
     if (!playerTableBody) return [];
     const rows = playerTableBody.querySelectorAll('tr');
+    if (rows.length === 0 || (rows.length === 1 && rows[0].querySelector('td').colSpan === 4)) {
+        return []; // Retorna vazio se não houver linhas ou se for a linha "aguardando dados"
+    }
     return Array.from(rows).map(row => {
         const cells = row.querySelectorAll('td');
         const name = cells[0]?.textContent.trim() || '';
@@ -95,23 +88,15 @@ function getPlayerData() {
     });
 }
 
-
-/**
- * Formata os dados dos jogadores para o prompt da IA.
- * @param {Array<Object>} data
- * @returns {string}
- */
 function formatDataForPrompt(data) {
     if (data.length === 0) return "Não há dados de jogadores para analisar.";
     const playerLines = data.map(p => `- ${p.name}: ${p.decks} decks, ${p.fame} fama (Status: ${p.status})`);
     return `Dados de participação na guerra:\n${playerLines.join('\n')}`;
 }
 
-/**
- * Gera a análise da IA.
- */
 async function handleGenerateAnalysis() {
     if (!ai) {
+        alert('Por favor, configure sua chave de API no ícone de engrenagem (⚙️) para usar esta funcionalidade.');
         openSettingsModal();
         return;
     }
@@ -152,9 +137,6 @@ ${formatDataForPrompt(playerData)}`;
     }
 }
 
-/**
- * Exporta os dados da tabela para um arquivo CSV.
- */
 function handleExportToCSV() {
     const playerData = getPlayerData();
     if (playerData.length === 0) {
@@ -180,31 +162,27 @@ function handleExportToCSV() {
     document.body.removeChild(link);
 }
 
-/**
- * Dispara a funcionalidade de impressão do navegador.
- */
 function handlePrint() {
     window.print();
 }
 
-/**
- * Configura a funcionalidade das abas.
- */
 function setupTabs() {
+    if(tabs.length === 0) return;
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            const target = document.querySelector(tab.dataset.tabTarget);
+            const targetSelector = tab.dataset.tabTarget;
+            if (!targetSelector) return;
+            const target = document.querySelector(targetSelector);
+
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
+            
             tabContents.forEach(content => content.classList.remove('active'));
             if (target) target.classList.add('active');
         });
     });
 }
 
-/**
- * Adiciona a funcionalidade de ordenação à tabela de jogadores.
- */
 function setupTableSorting() {
     if (!playerTable) return;
     const headers = playerTable.querySelectorAll('th.sortable');
@@ -212,20 +190,15 @@ function setupTableSorting() {
         header.addEventListener('click', () => {
             const column = header.dataset.column;
             const sortOrder = header.classList.contains('sort-asc') ? 'desc' : 'asc';
-            sortTableByColumn(playerTable, column, sortOrder);
             
             headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
             header.classList.add(sortOrder === 'asc' ? 'sort-asc' : 'sort-desc');
+            
+            sortTableByColumn(playerTable, column, sortOrder);
         });
     });
 }
 
-/**
- * Ordena uma tabela HTML por uma coluna específica.
- * @param {HTMLTableElement} table - O elemento da tabela.
- * @param {string} column - O nome da coluna (do data-column).
- * @param {string} order - 'asc' ou 'desc'.
- */
 function sortTableByColumn(table, column, order = 'asc') {
     const tableBody = table.querySelector('tbody');
     const rows = Array.from(tableBody.querySelectorAll('tr'));
@@ -244,21 +217,26 @@ function sortTableByColumn(table, column, order = 'asc') {
     rows.forEach(row => tableBody.appendChild(row));
 }
 
-
 // --- EVENT LISTENERS ---
 document.addEventListener('DOMContentLoaded', () => {
     initAiInstance();
 
-    if (settingsBtn) settingsBtn.addEventListener('click', openSettingsModal);
+    settingsBtns.forEach(btn => btn.addEventListener('click', openSettingsModal));
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeSettingsModal);
     if (saveApiKeyBtn) saveApiKeyBtn.addEventListener('click', saveApiKey);
-    if (apiKeyModal) apiKeyModal.addEventListener('click', (e) => {
-        if (e.target === apiKeyModal) closeSettingsModal();
-    });
+    if (apiKeyModal) {
+        apiKeyModal.addEventListener('click', (e) => {
+            if (e.target === apiKeyModal) closeSettingsModal();
+        });
+        apiKeyInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') saveApiKey();
+        });
+    }
 
     if (generateBtn) generateBtn.addEventListener('click', handleGenerateAnalysis);
     if (exportBtn) exportBtn.addEventListener('click', handleExportToCSV);
     if (printBtn) printBtn.addEventListener('click', handlePrint);
-    if (tabs.length > 0) setupTabs();
-    if (playerTable) setupTableSorting();
+    
+    setupTabs();
+    setupTableSorting();
 });
